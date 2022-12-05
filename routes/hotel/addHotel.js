@@ -8,7 +8,7 @@ const { uploadMultipleImage } = require("../../middlewares/base64");
 const addHotel = (router) => {
   router.post("/add-hotel", auth, uploadMultipleImage, async (req, res) => {
     try {
-      const { name, address, description, price, urlMaps, categoryId } =
+      const { name, address, description, price, room, urlMaps, categoryId } =
         req.body;
 
       const user = await User.findOne({ token: req.token });
@@ -41,6 +41,7 @@ const addHotel = (router) => {
           const newhotel = {
             categoryId: category._id,
             name,
+            room,
             address,
             description,
             price,

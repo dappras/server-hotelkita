@@ -6,6 +6,10 @@ const hotelScheme = new mongoose.Schema({
     type: String,
     required: true,
   },
+  room: {
+    type: Number,
+    required: true,
+  },
   address: {
     type: String,
     required: true,

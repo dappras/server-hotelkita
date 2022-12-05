@@ -28,7 +28,7 @@ const hotelByCategory = (router) => {
           const imageFacility = await Image.findOne({ _id: image });
 
           hasilItem.image.push(
-            `http://103.23.199.203:3000/${imageFacility.imageUrl}`
+            `http://103.226.139.23:3000/${imageFacility.imageUrl}`
           );
         }
 

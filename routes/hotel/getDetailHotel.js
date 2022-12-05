@@ -16,6 +16,7 @@ const getDetailHotel = (router) => {
         const hasilItem = {
           _id: hotel._id,
           name: hotel.name,
+          room: hotel.room,
           address: hotel.address,
           description: hotel.description,
           price: hotel.price,
@@ -30,7 +31,7 @@ const getDetailHotel = (router) => {
 
           hasilItem.image.push({
             id: image,
-            imageUrl: `http://103.23.199.203:3000/${imagehotel.imageUrl}`,
+            imageUrl: `http://103.226.139.23:3000/${imagehotel.imageUrl}`,
           });
         }
 

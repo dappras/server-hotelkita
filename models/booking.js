@@ -14,10 +14,6 @@ const bookingSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  bookingHour: {
-    type: Array,
-    required: true,
-  },
   invoice: {
     type: String,
     required: true,

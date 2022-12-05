@@ -5,6 +5,7 @@ const userRouter = require("./user");
 const categoryRouter = require("./category");
 const profileRouter = require("./profile");
 const hotelRouter = require("./hotel");
+const bookingRouter = require("./booking");
 
 const routerComposer = () => {
   var expressRouter = express.Router();
@@ -15,6 +16,7 @@ const routerComposer = () => {
   categoryRouter(expressRouter);
   profileRouter(expressRouter);
   hotelRouter(expressRouter);
+  bookingRouter(expressRouter);
 
   return expressRouter;
 };

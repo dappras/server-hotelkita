@@ -14,6 +14,7 @@ const editHotel = (router) => {
         name,
         address,
         description,
+        room,
         price,
         urlMaps,
         categoryId,
@@ -40,6 +41,7 @@ const editHotel = (router) => {
         }
 
         hotel.name = name;
+        hotel.room = room;
         hotel.address = address;
         hotel.description = description;
         hotel.price = price;
@@ -67,6 +69,7 @@ const editHotel = (router) => {
         });
       } else {
         hotel.name = name;
+        hotel.room = room;
         hotel.address = address;
         hotel.description = description;
         hotel.price = price;

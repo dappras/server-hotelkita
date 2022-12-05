@@ -18,7 +18,7 @@ const getAvailaleDate = (router) => {
           let tanggal = waktu.getDate();
           let bulan = waktu.getMonth() + 1;
 
-          let ada = false;
+          let jumlahroom = 0;
 
           for (let j = 0; j < date.length; j++) {
             const item = date[j];
@@ -28,18 +28,18 @@ const getAvailaleDate = (router) => {
               item.bookingMonth === bulan &&
               item.bookingYear === tahun
             ) {
-              ada = true;
+              jumlahroom += 1;
             }
+          }
+          if (jumlahroom != hotel.room) {
+            const data = {
+              date: tanggal,
+              month: bulan,
+              year: tahun,
+              availableRoom: hotel.room - jumlahroom,
+            };
 
-            if (ada === false) {
-              const data = {
-                date: tanggal,
-                month: bulan,
-                year: tahun,
-              };
-
-              hasil.push(data);
-            }
+            hasil.push(data);
           }
         }
 
@@ -60,6 +60,7 @@ const getAvailaleDate = (router) => {
             date: tanggal,
             month: bulan,
             year: tahun,
+            availableRoom: hotel.room,
           };
           hasil.push(data);
         }

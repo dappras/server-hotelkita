@@ -23,6 +23,7 @@ const getMyHotel = (router) => {
           const hasilItem = {
             _id: hotelItem._id,
             name: hotelItem.name,
+            room: hotelItem.room,
             address: hotelItem.address,
             description: hotelItem.description,
             price: hotelItem.price,
@@ -36,7 +37,7 @@ const getMyHotel = (router) => {
             const imageHotel = await Image.findOne({ _id: image });
 
             hasilItem.image.push(
-              `http://103.23.199.203:3000/${imageHotel.imageUrl}`
+              `http://103.226.139.23:3000/${imageHotel.imageUrl}`
             );
           }
 
