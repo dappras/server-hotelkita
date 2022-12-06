@@ -3,10 +3,10 @@ const bcrypt = require("bcryptjs");
 const fs = require("fs-extra");
 const path = require("path");
 const auth = require("../../middlewares/auth");
-const { uploadMultipleImage } = require("../../middlewares/base64");
+const { uploadImage } = require("../../middlewares/base64");
 
 const editProfile = (router) => {
-  router.post("/edit-profile", auth, uploadMultipleImage, async (req, res) => {
+  router.post("/edit-profile", auth, uploadImage, async (req, res) => {
     const {
       name,
       password,
