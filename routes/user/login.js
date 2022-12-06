@@ -1,4 +1,5 @@
 const User = require("../../models/user");
+const bcrypt = require("bcryptjs");
 
 const login = (router) => {
   router.post("/login", async (req, res) => {
@@ -25,7 +26,7 @@ const login = (router) => {
         msg: "Anda Berhasil Login!!",
         token: user.token,
       });
-    } catch (error) {
+    } catch (e) {
       return res.json({ msg: e.message });
     }
   });
