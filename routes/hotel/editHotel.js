@@ -68,6 +68,14 @@ const editHotel = (router) => {
           msg: "success update data",
         });
       } else {
+        for (let i = 0; i < removedImage.length; i++) {
+          const item = removedImage[i];
+          await Hotel.updateMany({}, { $pull: { imageId: { $in: [item] } } });
+          const image = await Image.findOne({ _id: item });
+          await fs.unlink(path.join(`public/${image.imageUrl}`));
+          await image.remove();
+        }
+
         hotel.name = name;
         hotel.room = room;
         hotel.address = address;
