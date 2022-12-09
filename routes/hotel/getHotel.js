@@ -15,28 +15,31 @@ const getHotel = (router) => {
         hasil = [];
         for (let i = 0; i < hotel.length; i++) {
           const hotelItem = hotel[i];
-          const hasilItem = {
-            _id: hotelItem._id,
-            name: hotelItem.name,
-            room: hotelItem.room,
-            address: hotelItem.address,
-            description: hotelItem.description,
-            price: hotelItem.price,
-            urlMaps: hotelItem.urlMaps,
-            categoryId: hotelItem.categoryId,
-            image: [],
-            userId: hotelItem.userId,
-          };
-          for (let j = 0; j < hotelItem.imageId.length; j++) {
-            const image = hotelItem.imageId[j];
-            const imagehotel = await Image.findOne({ _id: image });
 
-            hasilItem.image.push(
-              `http://103.226.139.23:3000/${imagehotel.imageUrl}`
-            );
+          if (hotelItem.status == 1) {
+            const hasilItem = {
+              _id: hotelItem._id,
+              name: hotelItem.name,
+              room: hotelItem.room,
+              address: hotelItem.address,
+              description: hotelItem.description,
+              price: hotelItem.price,
+              urlMaps: hotelItem.urlMaps,
+              categoryId: hotelItem.categoryId,
+              image: [],
+              userId: hotelItem.userId,
+            };
+            for (let j = 0; j < hotelItem.imageId.length; j++) {
+              const image = hotelItem.imageId[j];
+              const imagehotel = await Image.findOne({ _id: image });
+
+              hasilItem.image.push(
+                `http://103.226.139.23:3000/${imagehotel.imageUrl}`
+              );
+            }
+
+            hasil.push(hasilItem);
           }
-
-          hasil.push(hasilItem);
         }
         return res.json({
           success: true,

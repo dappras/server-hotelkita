@@ -1,4 +1,5 @@
 const addHotel = require("./addHotel");
+const confirmHotel = require("./confirmHotel");
 const deleteHotel = require("./deleteHotel");
 const editHotel = require("./editHotel");
 const getAvailaleDate = require("./getAvailableDate");
@@ -20,6 +21,7 @@ const hotelRouter = (router) => {
   getAvailaleDate(router);
   getBankHotel(router);
   getLatestHotel(router);
+  confirmHotel(router);
 
   return router;
 };

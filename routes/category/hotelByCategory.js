@@ -12,27 +12,29 @@ const hotelByCategory = (router) => {
         let hotelItem = await Hotel.findOne({
           _id: category.facilityId[i],
         });
-        const hasilItem = {
-          id: hotelItem._id,
-          name: hotelItem.name,
-          address: hotelItem.address,
-          description: hotelItem.description,
-          price: hotelItem.price,
-          urlMaps: hotelItem.urlMaps,
-          categoryId: hotelItem.categoryId,
-          image: [],
-          userId: hotelItem.userId,
-        };
-        for (let j = 0; j < hotelItem.imageId.length; j++) {
-          const image = hotelItem.imageId[j];
-          const imageFacility = await Image.findOne({ _id: image });
+        if (hotelItem.status == 1) {
+          const hasilItem = {
+            id: hotelItem._id,
+            name: hotelItem.name,
+            address: hotelItem.address,
+            description: hotelItem.description,
+            price: hotelItem.price,
+            urlMaps: hotelItem.urlMaps,
+            categoryId: hotelItem.categoryId,
+            image: [],
+            userId: hotelItem.userId,
+          };
+          for (let j = 0; j < hotelItem.imageId.length; j++) {
+            const image = hotelItem.imageId[j];
+            const imageFacility = await Image.findOne({ _id: image });
 
-          hasilItem.image.push(
-            `http://103.226.139.23:3000/${imageFacility.imageUrl}`
-          );
+            hasilItem.image.push(
+              `http://103.226.139.23:3000/${imageFacility.imageUrl}`
+            );
+          }
+
+          arrHotel.push(hasilItem);
         }
-
-        arrHotel.push(hasilItem);
       }
 
       return res.json({
