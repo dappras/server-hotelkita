@@ -21,6 +21,7 @@ const getDetailHotel = (router) => {
           description: hotel.description,
           price: hotel.price,
           urlMaps: hotel.urlMaps,
+          status: hotel.status,
           categoryId: hotel.categoryId,
           image: [],
           userId: hotel.userId,
