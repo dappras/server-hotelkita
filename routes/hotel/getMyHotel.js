@@ -25,6 +25,7 @@ const getMyHotel = (router) => {
             name: hotelItem.name,
             room: hotelItem.room,
             address: hotelItem.address,
+            status: hotelItem.status,
             description: hotelItem.description,
             price: hotelItem.price,
             urlMaps: hotelItem.urlMaps,
