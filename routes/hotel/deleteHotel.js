@@ -30,16 +30,23 @@ const deleteHotel = (router) => {
       await Category.updateMany({}, { $pull: { hotelId: { $in: [id] } } });
       await category.save();
 
-      const bookingFacility = await Booking.find({ hotelId: hotel._id });
-      await bookingFacility.remove();
+      try {
+        const bookingFacility = await Booking.find({ hotelId: hotel._id });
+        await bookingFacility.remove();
+        const bookingDateFacility = await BookingDate.find({
+          hotelId: hotel._id,
+        });
+        await bookingDateFacility.remove();
 
-      const bookingDateFacility = await BookingDate.find({
-        hotelId: hotel._id,
-      });
-      await bookingDateFacility.remove();
+        await hotel.remove();
+        return res.json({ success: true, msg: "success delete data" });
+      } catch (e) {
+        await hotel.remove();
+        return res.json({ success: true, msg: "success delete data" });
+      }
 
-      await hotel.remove();
-      return res.json({ success: true, msg: "success delete data" });
+      // await hotel.remove();
+      // return res.json({ success: true, msg: "success delete data" });
     } catch (e) {
       return res.json({
         success: false,
