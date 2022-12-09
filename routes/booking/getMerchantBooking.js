@@ -15,7 +15,7 @@ const getMerchantBooking = (router) => {
       for (let i = 0; i < booking.length; i++) {
         const item = booking[i];
 
-        if (item.status == 1) {
+        if (item.status == 1 || item.status == 2) {
           const hotel = await Hotel.findOne({ _id: item.hotelId });
 
           const hasilItem = {
