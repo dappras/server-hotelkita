@@ -6,7 +6,9 @@ const getProfile = (router) => {
     try {
       const token = req.token;
       const profile = await User.findOne({ token: token });
-      profile.imageUrl = `http://103.226.139.23:3000/${profile.imageUrl}`;
+      if (profile.imageUrl !== undefined) {
+        profile.imageUrl = `http://103.226.139.23:3000/${profile.imageUrl}`;
+      }
       return res.json({
         success: true,
         msg: "success get data",
