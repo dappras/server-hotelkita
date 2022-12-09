@@ -2,6 +2,8 @@ const auth = require("../../middlewares/auth");
 const Hotel = require("../../models/hotel");
 const Image = require("../../models/image");
 const Category = require("../../models/category");
+const Booking = require("../../models/booking");
+const BookingDate = require("../../models/booking-date");
 const fs = require("fs-extra");
 const path = require("path");
 
@@ -27,6 +29,15 @@ const deleteHotel = (router) => {
       const category = await Category.findOne({ _id: hotel.categoryId });
       await Category.updateMany({}, { $pull: { hotelId: { $in: [id] } } });
       await category.save();
+
+      const bookingFacility = await Booking.find({ hotelId: hotel._id });
+      await bookingFacility.remove();
+
+      const bookingDateFacility = await BookingDate.find({
+        hotelId: hotel._id,
+      });
+      await bookingDateFacility.remove();
+
       await hotel.remove();
       return res.json({ success: true, msg: "success delete data" });
     } catch (e) {
