@@ -5,7 +5,7 @@ const Hotel = require("../../models/hotel");
 const Image = require("../../models/image");
 
 const getMerchantBooking = (router) => {
-  router.post("get-merchant-booking", auth, async (req, res) => {
+  router.post("/get-merchant-booking", auth, async (req, res) => {
     try {
       const user = await User.findOne({ token: req.token });
       const booking = await Booking.find({ userHotelId: user._id });
