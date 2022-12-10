@@ -29,7 +29,7 @@ const getCategory = (router) => {
         return res.json({
           success: true,
           msg: "success getting data",
-          data: category,
+          data: hasil,
         });
       }
     } catch (e) {
