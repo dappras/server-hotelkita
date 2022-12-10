@@ -2,7 +2,7 @@ const Hotel = require("../../models/hotel");
 const Image = require("../../models/image");
 
 const getLatestHotel = (router) => {
-  router.post("/get-hotel", async (req, res) => {
+  router.post("/get-latest-hotel", async (req, res) => {
     try {
       const hotel = await Hotel.find();
       if (hotel === []) {
