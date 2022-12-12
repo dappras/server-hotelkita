@@ -5,7 +5,7 @@ const Hotel = require("../../models/hotel");
 const Image = require("../../models/image");
 
 const getUserBooking = (router) => {
-  router.post("get-user-booking", auth, async (req, res) => {
+  router.post("/get-user-booking", auth, async (req, res) => {
     const { status } = req.body;
     try {
       const user = await User.findOne({ token: req.token });
