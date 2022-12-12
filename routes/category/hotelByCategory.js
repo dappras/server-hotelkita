@@ -8,9 +8,9 @@ const hotelByCategory = (router) => {
       const category = await Category.findOne({ _id: id });
       const arrHotel = [];
 
-      for (let i = 0; i < category.facilityId.length; i++) {
+      for (let i = 0; i < category.hotelId.length; i++) {
         let hotelItem = await Hotel.findOne({
-          _id: category.facilityId[i],
+          _id: category.hotelId[i],
         });
         if (hotelItem.status == 1) {
           const hasilItem = {
