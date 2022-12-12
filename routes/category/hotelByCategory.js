@@ -1,5 +1,6 @@
 const Category = require("../../models/category");
 const Hotel = require("../../models/hotel");
+const Image = require("../../models/image");
 
 const hotelByCategory = (router) => {
   router.post("/hotel-by-category", async (req, res) => {
