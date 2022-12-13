@@ -3,7 +3,7 @@ const Hotel = require("../../models/hotel");
 const User = require("../../models/user");
 
 const getBankHotel = (router) => {
-  router.post("get-bank-hotel", auth, async (req, res) => {
+  router.post("/get-bank-hotel", auth, async (req, res) => {
     const { hotelId } = req.body;
     try {
       const hotel = await Hotel.findOne({ _id: hotelId });
